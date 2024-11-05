@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% block main_content %}
+<main class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block alert alert-dark alert-dismissible fade show">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-0 mb-0 border-bottom">
+    <h1 class="h2">LISTE DE L'INSCRIPTION</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <form method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <div class="input-group">
+            <input type="search" name="search" class="form-control form-control-dark text-bg-white" 
+                   placeholder="Search..." aria-label="Search"
+                   value="{{ search_query }}">
+            <button class="btn btn-outline-secondary pm-3" type="submit"> <i class="fas fa-search"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main_content %}
+
+
+
+
+<div class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block">
+
+  <div class="d-flex justify-content-between">
+    <a id="add-stude" href="{% url 'add_inscrie' %}" class="btn btn-outline-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;&nbsp; Ajouter</a>
+   
+    <form method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="date" name="start_date" value="{{ start_date }}">
+          <input type="date" name="end_date" value="{{ end_date }}">
+          <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+
+    <span class="welcome text-dark">
+      Bienvenue: <strong><span class="text-primary">{{ user.get_username }}</span></strong>
+    </span>
+  </div> <br>
+
+  {% if messages %}
+  <div class="alert alert-success text-center">
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+  </div>
+  
+  {% endif %}
+    <table class="table table-bordered table-sm mt-2" style="text-align: center; font-size:18px;">
+      <thead class="table-primary">
+        <tr>
+          <th style="width: 9%">DATE</th>
+          <th style="width: 18%">ETUDIANT</th>
+          <th style="width: 20%">FORMATEUR</th>
+          <th style="width: 15%"">MAIL ETUDIANT</th>
+          <th style="width: 14%">FORMATIONS</th>
+          <th style="width: 10%">DURE FORMATIOSN</th>
+          <th style="width: 12%">PRIX </th>
+          <th style="width: 17%" colspan="4">ACTIONS</th>
+        </tr>
+      </thead>
+
+      
+      <tbody>
+        {% for inscrie in inscries %}
+        <tr class="txt-sm " id="chk_td">
+          <td class="bg-white" data-label="DATE" id="top-table" style="color: black;">{{ inscrie.dates }}</td>
+          <td class="bg-white" data-label="NOM ETUDIANT" id="responsive-border" style="color: black;"> {{ inscrie.student.nom }} {{ inscrie.student.prenom }} </td>
+          <td class="bg-white" data-label="NOM FORMATEUR" id="responsive-border" style="color: black;"> {{ inscrie.student.formateur.genr }} : {{ inscrie.student.formateur.names }} {{ inscrie.student.formateur.last_name }} </td>
+          <td class="bg-white" data-label="EMAIL ETUDIANT" id="responsive-border" style="color: black;">{{ inscrie.student.email }}</td>
+          <td class="bg-white" data-label="FORMATION" id="responsive-border" style="color: black;">{{ inscrie.formation.type }}</td>
+          <td class="bg-white" data-label="DURE" id="responsive-border" style="color: black;">{{ inscrie.formation.dure }}</td>
+          <td class="bg-white" data-label="PRIX" id="responsive-border" style="color: black;">{{ inscrie.formation.prix }}</td>
+
+          <td class="bg-white" data-label="ACTION" id="responsive-border" style="color: black;"></td>
+          
+          <td class="bg-white"> 
+          <a href="{% url 'generate_pdf' inscrie.id %}" class="btn btn-primary">PDF</a>
+          </td>
+
+          <td class="bg-white">
+              <a href="{% url 'edit_inscrie' inscrie.id %}" class="btn-action btn btn-primary" title="Edit Etudiant"><i class="fas fa-edit"></i></a>
+          </td>
+          <td class="bg-white">
+            <a class="btn-action btn btn-danger" title="Delete client" data-bs-toggle="modal"
+            data-bs-target="#deleteModal{{ inscrie.pk }}"> <i class="fas fa-trash-alt alert-alert-danger"></i></a>
+          </td>
+
+        </tr>
+
+        <!-- Model pour le suppression  -->
+        <div class="modal fade" id="deleteModal{{ inscrie.pk }}" tabindex="-1"
+          aria-labelledby="deleteModalLabel{{ inscrie.pk }}" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel{{ inscrie.pk }}"><i
+                    class="fas fa-trash-alt"></i>&nbsp;&nbsp; Supprimer Inscription</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="text-center text-danger txt-sm">
+                  <i class="fas fa-times-circle fa-5x mb-4 mt-2"></i>
+                </div>
+                <div class="text-center text-danger txt-sm">
+                  <span>Voulez-vous supprimer cette inscription ?</span>
+                  <div class="text-dark mt-3 mb-2">Inscription: <strong>{{ inscrie.id }}</strong></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm txt-sm" data-bs-dismiss="modal">Non</button>
+                <a href="{% url 'delete_inscrie' inscrie.id %}" type="button"
+                  class="btn btn-outline-danger btn-sm txt-sm">Oui</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </tbody>
+
+      <tfoot>
+        <tr class="bg-white">
+            <td colspan="6" class="text-end"><strong>TOTAL PRIX:</strong></td>
+            <td>{{ total_price }} Ariary</td>
+            <td colspan="4"></td>
+        </tr>
+    </tfoot>
+
+    </table>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchForm').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '{% url "liste_inscrie" %}', // Replace with the correct URL name for inscrie_list
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(data) {
+                    $('#inscrieList').html(data.html);
+                }
+            });
+        });
+    });
+</script>
+
+  {% endblock content %}

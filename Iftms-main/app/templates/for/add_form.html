@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body border-dark text-primary mt-5">
+                <span class="text-center txt-sm">{% block card-title %}AJOUTER UN FORMATIOS{% endblock card-title %}</span>
+            </div><br>
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text">Type</label>
+                    <select name="type" class="form-select">
+                        <option value="Elevage">Elevage</option>
+                        <option value="Agricole">Agricole</option>
+                        <option value="Transformation Produit">Transformation Produit</option>
+                        <option value="Couper coutume">Couper coutume</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text">Durée</label>
+                    <select name="dure" class="form-select">
+                        <option value="1 Mois">1 Mois</option>
+                        <option value="2 Mois">2 Mois</option>
+                        <option value="3 Mois">3 Mois</option>
+                    </select>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text">prix</label>
+                    <select name="prix" class="form-select">
+                        <option value="50000 ">50000 ariray 1 Mois</option>
+                        <option value="100000">100000 ariray 2 Mois</option>
+                        <option value="150000">150000 ariary 3  Mois</option>
+                    </select>
+                </div>
+
+
+                
+
+                <div class="d-grid gap-2">
+                    <div class="d-grid gap-2 mt-2">
+                        <button type="submit" class="btn btn-primary btn-sm"><i
+                                class="fas fa-plus"></i>&nbsp;&nbsp;Ajoute</button>
+                        <a href="{% url 'list_formations' %}" class="btn btn-dark btn-sm"><i
+                                class="fas fa-chevron-left"></i>&nbsp;&nbsp;Retour</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

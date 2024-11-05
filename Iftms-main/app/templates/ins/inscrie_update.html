@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body border-dark text-primary mt-5">
+                <span class="text-center txt-sm">{% block card-title %}MODIFIER DE L'INSCRIPTIOS{% endblock card-title %}</span>
+            </div><br>
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">Prénom</span>
+                    <input type="date" name="dates" id="dates" class="form-control"
+                        value="{{ inscrie.dates|date:'Y-m-d' }}" required>
+                </div>
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <label for="student" class="input-group-text">Etudiants</label>
+                    <select name="student" id="student" class="form-select" required>
+                        {% for student in students %}
+                        <option value="{{ student.id }}">{{ student.nom }} {{ student.prenom }} - {{ student.email }} - {{ student.formateur.names }} {{ student.formateur.last_name }} ({{ student.formateur.genr  }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+
+                <div class="input-group input-group-sm mb-3">
+                    <label for="formation" class="input-group-text side-label">Formation</label>
+                    <select name="formation" id="formation" class="form-control">
+                        {% for formation in formations %}
+                        <option value="{{ formation.id }}">{{ formation.type }} ({{ formation.dure }} - {{ formation.prix }} ) </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="d-grid gap-2 mt-2">
+                    <button type="submit" class="btn btn-primary btn-sm"><i
+                            class="fas fa-edit"></i>&nbsp;&nbsp;Modifier</button>
+                    <a href="{% url 'liste_inscrie' %}" class="btn btn-dark btn-sm"><i
+                            class="fas fa-chevron-left"></i>&nbsp;&nbsp;Retour</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+
+
+{% endblock content %}

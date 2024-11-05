@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+{% if messages %}
+<div class="alert alert-success text-center ">
+  {% for message in messages %}
+  <p>{{ message }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<main>
+  <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'img/elevage_des_boeufs_en_guinee_photo_aliou_diallo.jpeg' %}" alt="notebook.jpg"
+          style="width: 100%; height: 610px; border: solid; border-radius: 20px;">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>L'ELEVAGE.</h1>
+            <p class="opacity-75">L'elevage concerne de n'import que produit </p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/growing-organic-ecological-plants-fields-background.jpg' %}" alt="steak.jpg"
+          style="width: 100%; height: 610px; border: solid; border-radius: 20px;">
+
+        <div class="container">
+
+          <div class="carousel-caption">
+            <h1>AGRICOLE.</h1>
+            <p>L'agricole concerne de cultuvateur pour ameliore leur produit.</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/image.jpeg' %}" alt="hamburger.jpg"
+          style="width: 100%; height: 610px; border: solid; border-radius: 20px;">
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>TRANSFORMATION DE PRODUIT AGRICOLE.</h1>
+            <p>Pour que les paysans ne cherche pas ailleur eux aussi avait changer les produit premier .</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</main>
+
+
+
+<br><br>
+<footer class="footer_section">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 footer-col">
+      <div class="footer_contact">
+        <h4>
+          Cordonner
+        </h4>
+        <div class="contact_link_box">
+          <a href="">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <span>
+              Location
+            </span>
+          </a><br>
+          <a href="">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span>
+              Appel +261 349381846
+            </span>
+          </a><br>
+          <a href="">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <span>
+              iftmantsinanana@gmail.com
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 footer-col">
+      <div class="footer_detail">
+        <a href="" class="footer-logo">
+          IFTM
+        </a>
+        <p>
+          les partenairiat de IFTM
+        </p>
+        <div class="footer_social">
+          <a href="">
+            <i class="fa fa-facebook">facebook</i>
+          </a>
+          <a href="">
+            <i class="fa fa-twitter">twitter</i>
+          </a>
+          <a href="">
+            <i class="fa fa-linkedin">linkedin</i>
+          </a>
+          <a href="">
+            <i class="fa fa-instagram">instagram</i>
+          </a>
+          <a href="">
+            <i class="fa fa-pinterest">pinterest</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 footer-col">
+      <p>
+        Heur d'ouverture du bureau de ITFM
+      </p>
+      <p>
+        Tout le jours
+      </p>
+      <p>
+        8H 30min -17H 00 min
+      </p>
+    </div>
+  </div>
+
+</div>
+</footer>
+{% endblock content %}

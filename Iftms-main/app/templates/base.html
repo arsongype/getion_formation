@@ -1,0 +1,104 @@
+{% load static %}
+
+<!doctype html>
+<html lang="fr" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.122.0">
+  <title>{% block title %}...{% endblock title %}</title>
+
+  <!-- Static CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+  <link rel="stylesheet" href="{% static 'css/product.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+</head>
+
+<body>
+
+
+
+  <main>
+    <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+      <div class="container-fluid">
+        <a href="{% url 'home' %}"
+          class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <img src="{% static 'img/log.png' %}" alt="logo.png" class="img-fluid"
+            style="width: 110px; height: 60px; border: solid; border-radius: 20px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark"
+          aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark"
+          aria-labelledby="offcanvasNavbarDarkLabel">
+          <div class="offcanvas-header">
+
+
+          
+            <a href="{% url 'home' %}"
+              class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <img src="{% static 'img/adminpropic.png' %}" alt="logo.png" class="img-fluid"
+              style="width: 90px; height: 60px; border: solid 1px; border-radius: 50px;"> </i>  
+            </a> 
+      
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'formateur_list' %}"> <i
+                    class="fas fa-user"> </i> Formateur</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'stude' %}"> <i
+                    class="fas fa-rupee-sign f-left"> </i> Etudiant</a>
+              </li>
+
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'list_formations' %}"> <i
+                    class="fas fa-home"> </i> Formations</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'liste_inscrie' %}"><i class="fas fa-car">
+                  </i> Inscriptions</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}"><i
+                    class="fas fa-sign-out-alt"></i> Se Deconnecte</a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="bg-white p-5 rounded">
+      {% block content %}
+
+      {% endblock content %}
+    </div>
+  </main>
+
+
+  <script src="{% static 'popper/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="{% static 'js/checkout.js' %}"></script>
+  <!-- <script src="{% static 'js/color-modes.js' %}"></script> -->
+</body>
+
+</html>

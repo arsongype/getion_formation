@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- Page Content  -->
+{% block content %}
+
+<div class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body border-dark text-primary mt-5">
+                <span class="text-center txt-sm">{% block card-title %}AJOUTER DES ETUDIANTS{% endblock card-title %}</span>
+            </div><br>
+            <form action="{% url 'add' %}" method="POST" autocomplete="on" enctype="multipart/form-data" class="card p-3 border-dark mt-3 mb-5 bg-white">
+                {% csrf_token %}
+                        
+                
+                <!-- Champ Nom -->
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">Nom</span>
+                    <input type="text" name="nom" id="nom" class="form-control" placeholder="Votre nom" value="{{ stdue.nom|default:'' }}" required>
+                </div>
+
+                <!-- Champ Prénom -->
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">Prénom</span>
+                    <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Votre prénom" value="{{ stdue.prenom|default:'' }}" required>
+                </div>
+
+                <!-- Champ Age -->
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">Naissance</span>
+                    <input type="date" name="naissance" id="age" class="form-control" placeholder="date de naissance" value="{{ stdue.naissance|date:'Y-m-d' }}" required>
+                </div>
+
+                <!-- Champ Genre -->
+                <div class="input-group input-group-sm mb-3">
+                    <label for="genre" class="input-group-text side-label">Genre</label>
+                    <select name="genre" id="genre" class="form-select" required>
+                        <option value="" hidden>Selectionnez</option>
+                        <option value="Male" {% if client.genre == "Male" %}selected{% endif %}>M</option>
+                        <option value="Femme" {% if client.genre == "Femme" %}selected{% endif %}>F</option>
+                    </select>
+                </div>
+
+                <!-- Champ Email -->
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label">Email</span>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="{{ stdue.email|default:'' }}" required>
+                </div>
+
+                <div class="input-group input-group-sm mb-3">
+                    <label for="formateur" class="input-group-text side-label">formateur</label>
+                    <select name="formateur" id="formateur" class="form-select" required>
+                        {% for formateur in formateurs %}
+                            <option value="{{ formateur.id }}">{{ formateur.names }} {{ formateur.last_name }} ({{ formateur.genr }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+                <!-- Bouton d'ajout -->
+                <div class="d-grid gap-2 mt-2">
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;&nbsp;Ajoute</button>
+                    <a href="{% url 'stude' %}" class="btn btn-dark btn-sm"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Retour</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

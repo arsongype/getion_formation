@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block">
+    <div class="card card-body border-dark text-primary mt-5">
+        <span class="text-center txt-sm">{% block card-title %}MODIFIER DE FORMATION{% endblock card-title %}</span>
+    </div><br>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="input-group mb-3">
+            <label class="input-group-text">Type</label>
+            <select name="type" class="form-select">
+                <option value="Elevage" {% if formation.type == 'Elevage' %} selected {% endif %}>Elevage</option>
+                <option value="Agricole" {% if formation.type == 'Agricole' %} selected {% endif %}>Agricole</option>
+                <option value="Transformation Produit" {% if formation.type == 'Transformation Produit' %} selected {% endif %}>Transformation Produit</option>
+                <option value="Couper coutume" {% if formation.type == 'Couper coutume' %} selected {% endif %}>Couper coutume</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">Durée</label>
+            <select name="dure" class="form-select">
+                <option value="1 Mois" {% if formation.dure == '1 Mois' %} selected {% endif %}>1 Mois</option>
+                <option value="2 Mois" {% if formation.dure == '2 Mois' %} selected {% endif %}>2 Mois</option>
+                <option value="3 Mois" {% if formation.dure == '3 Mois' %} selected {% endif %}>3 Mois</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text">Prix</label>
+            <select name="prix" class="form-select">
+                <option value="50000" {% if formation.dure == '1 Mois' %} selected {% endif %}>50000  Ariary un Mois</option>
+                <option value="100000" {% if formation.dure == '2 Mois' %} selected {% endif %}>100000 Ariary 2 Mois</option>
+                <option value="150000" {% if formation.dure == '3 Mois' %} selected {% endif %}>150000 Ariary 3 Mois</option>
+            </select>
+        </div>
+
+        <div class="d-grid gap-2 mt-2">
+            <button id="btn-add" type="submit" class="btn btn-primary btn-sm txt-sm"><i class="fas fa-edit"></i>&nbsp;&nbsp;Modifier</button>
+            <a href="{% url 'list_formations' %}" class="btn btn-dark btn-sm txt-sm"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Retour</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

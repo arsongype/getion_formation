@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+{% block main_content %}
+<main class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block alert alert-dark alert-dismissible fade show">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-0 mb-0 border-bottom">
+    <h1 class="h2">LISTE DE FORMATEUR</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <form method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <div class="input-group">
+            <input type="search" name="q" class="form-control form-control-dark text-bg-white" placeholder="Search..." value="{{ query }}">
+            <button class="btn btn-outline-secondary pm-3" type="submit"> <i class="fas fa-search"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main_content %}
+
+
+
+<div class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block">
+
+    <!-- Add Button and get Username -->
+    <div class="d-flex justify-content-between">
+        <a id="add-stude" href="{% url 'add_formateur' %}" class="btn btn-outline-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;&nbsp; Ajouter</a>
+
+        <span class="welcome text-dark">
+            Bienvenue : <strong><span class="text-primary">{{ user.get_username }}</span></strong>
+        </span>
+    </div> <br>
+
+    {% if messages %}
+    <div class="alert alert-success text-center">
+        {% for message in messages %}
+            <p>{{ user.get_type }}{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+    <center>
+        <table class="bg-white table table-bordered table-sm mt-4" style="text-align: center; font-size:18px;">
+            <thead class="table-primary">
+                <tr>
+                    <th>GENRE</th>
+                    <th >NOM</th>
+                    <th >PRENOM</th>
+                    <th>E-MAIL</th>
+                    <th  colspan="3">ACTION</th>
+                </tr>
+            </thead>
+            <!-- Data From the Bakend  -->
+
+            {% if formateurs %}
+
+            {% for formateur in formateurs %}
+            <tr class="bg-white txt-sm" id="chk_td">
+                <td class="bg-white" data-label="GENRE" id="responsive-border" style="color: black">{{ formateur.genr }}</td>
+                <td class="bg-white" data-label="NOM" id="top-table" style="color: black">{{ formateur.names }}</td>
+                <td class="bg-white" data-label="PRENOM" id="responsive-border" style="color: black">{{ formateur.last_name }}</td>
+                <td class="bg-white" data-label="EMAIL" id="responsive-border" style="color: black">{{ formateur.e_mail }}</td>
+                <td class="bg-white" data-label="ACTION" id="responsive-border" style="color: black">
+                    <a href="{% url 'edit_formateur' formateur.id %}" class="btn-action btn btn-primary" title="Edit Etudiant"><i class="fas fa-edit"></i></a>
+                
+                    <a class="btn-action btn btn-danger" title="Delete client" data-bs-toggle="modal" data-bs-target="#deleteModal{{ formateur.pk }}">
+                        <i class="fas fa-trash-alt alert-alert-danger"></i>
+                    </a>
+                </td>
+
+            </tr>
+            <!-- Modal (Delete Confirmation) -->
+                <div class="modal fade" id="deleteModal{{ formateur.pk }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp; supprimer formateur</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center text-danger txt-sm">
+                                <i class="fas fa-times-circle fa-5x mb-4 mt-2"></i>
+                            </div>
+                            <div class="text-center text-danger txt-sm">
+                                <span>Voulez-vous supprimer le formateur ?</span>
+                                <div class="text-dark mt-3 mb-2">formateur: <strong>{{ formateur.id }}</strong></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm txt-sm" data-bs-dismiss="modal">Non</button>
+                        <a href="{% url 'formateur_delete' formateur.id %}"  type="button" class="btn btn-outline-danger btn-sm txt-sm">Oui</a >
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun résultat trouvé</td>
+                </tr>
+            {% endif %}
+        </table>
+    </center>
+
+</div> 
+
+{% endblock content %}

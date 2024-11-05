@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="col-md-9 ms-sm-auto col-lg-12 px-md-5 d-flex-block">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body border-dark text-primary mt-5">
+                <span class="text-center txt-sm">{% block card-title %}MODIFIER DE FORMATEUR{% endblock card-title %}</span>
+            </div><br><br>
+            <form method="POST" action="{% url 'edit_formateur' formateur.id %}">
+                {% csrf_token %}
+
+                {% if messages %}
+                    <div class="alert alert-success">  <!-- Fix: class should be alert-success -->
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+
+                <!-- For Genre (Gender) -->
+                <div class="input-group input-group-sm mb-3">
+                    <label for="gender" class="input-group-text side-label"><span class="txt-sm">Genre</span></label>
+                    <select name="genr" id="genr" class="form-select">
+                        <option value="Monsieur" {% if formateur.genr == 'Monsieur' %} selected {% endif %}>Mr</option>
+                        <option value="Madam" {% if formateur.genr == 'Madam' %} selected {% endif %}>Mm</option>
+                    </select>
+                </div>
+
+                <!-- For Name -->
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label"><span class="txt-sm">Nom</span></span>
+                    <input type="text" name="names" id="names" class="form-control" value="{{ formateur.names }}">
+                </div>
+
+                <!-- For Prenom -->
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label"><span class="txt-sm">Prénom</span></span>
+                    <input type="text" name="last_name" id="last_name" class="form-control" value="{{ formateur.last_name }}">
+                </div>
+
+                
+
+                <!-- For Email -->
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text side-label"><span class="txt-sm">E-mail</span></span>
+                    <input type="email" name="e_mail" id="e_mail" class="form-control" value="{{ formateur.e_mail }}">
+                </div>
+
+                <div class="d-grid gap-2 mt-2">
+                    <button id="btn-add" type="submit" class="btn btn-primary btn-sm txt-sm"><i class="fas fa-edit"></i>&nbsp;&nbsp;Modifier</button>
+                    <a href="{% url 'formateur_list' %}" class="btn btn-dark btn-sm txt-sm"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Retour</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
