@@ -321,17 +321,17 @@ def add_inscrie(request):
         inscrie.save()
         
         # Send confirmation email
-        # send_mail(
-        #     'Confirmation d’inscription',
-        #     f'Bonjour {student.nom} {student.prenom},\n\n'
-        #     f'Vous êtes inscrit à la formation "{formation.type}" d’une durée de {formation.dure} mois le "{inscrie.dates}. '
-        #     f'Le coût de la formation est {formation.prix} Ariary.\n\n'
-        #     'Merci pour votre inscription.',
-        #     'gype09@gmail.com',  # Replace with your sender email
-        #     [student.email],  # Student's email as the recipient
-        #     fail_silently=False,
-        #     
-        #     )
+        send_mail(
+            'Confirmation d’inscription',
+            f'Bonjour {student.nom} {student.prenom},\n\n'
+            f'Vous êtes inscrit à la formation "{formation.type}" d’une durée de {formation.dure} la date inscriptions est   "{inscrie.dates}. '
+            f'Le coût de la formation est {formation.prix} Ariary.\n\n'
+            'Merci pour votre inscription.',
+            'gype09@gmail.com',  # Replace with your sender email
+            [student.email],  # Student's email as the recipient
+            fail_silently=False,
+            
+            )
         messages.success(request, 'Inscription ajouté avec succès')
         return redirect(reverse('liste_inscrie'))
 
