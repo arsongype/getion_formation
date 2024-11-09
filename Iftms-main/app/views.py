@@ -12,6 +12,8 @@ from django.http import HttpResponse
 from xhtml2pdf import pisa
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
+from django.db.models.functions import TruncMonth
 
 
 @login_required(login_url='login')
@@ -21,6 +23,45 @@ def Home(request):
 @login_required(login_url='login')
 def Base(request):
     return render(request, 'base.html')
+
+
+
+# def inscriptions_by_month(request):
+#     monthly_counts = (
+#         Inscrie.objects
+#         .annotate(month=TruncMonth('dates'))
+#         .values('month')
+#         .annotate(count=Count('id'))
+#         .order_by('month')
+#     )
+#     # Prepare data for the chart
+#     months = [item['month'].strftime('%Y-%m') for item in monthly_counts]
+#     counts = [item['count'] for item in monthly_counts]
+
+#     context = {
+#         'months': months,
+#         'counts': counts,
+#     }
+#     return render(request, 'home.html', context)
+
+
+
+# def popular_formations(request):
+#     formation_counts = (
+#         Inscrie.objects
+#         .values('formation__type')
+#         .annotate(count=Count('formation'))
+#         .order_by('-count')
+#     )
+#     formations = [item['formation__type'] for item in formation_counts]
+#     counts = [item['count'] for item in formation_counts]
+
+#     context = {
+#         'formations': formations,
+#         'counts': counts,
+#     }
+#     return render(request, 'home.html', context)
+
 
 
 # ----------------------------------------------------------------          ---------------------------------------------------------------------
@@ -272,7 +313,8 @@ def inscrie_list(request):
             Q(student__nom__icontains=search_query) |
             Q(student__prenom__icontains=search_query) |
             Q(student__email__icontains=search_query) |
-            Q(formation__type__icontains=search_query)
+            Q(formation__type__icontains=search_query)|
+            Q(formateur__names__icontains=search_query)
         )
 
     if start_date and end_date:

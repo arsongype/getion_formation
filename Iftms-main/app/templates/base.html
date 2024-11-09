@@ -9,7 +9,9 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.122.0">
-  <title>{% block title %}...{% endblock title %}</title>
+  <title>{% block title %}IFTM{% endblock title %}</title>
+
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- Static CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -56,24 +58,22 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'formateur_list' %}"> <i
-                    class="fas fa-user"> </i> Formateur</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'formateur_list' %}"> <i class="fas fa-warehouse">  </i>  Formateur</a>
               </li>
 
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'stude' %}"> <i
-                    class="fas fa-rupee-sign f-left"> </i> Etudiant</a>
+                    class="fas fa-user-graduate"> </i> Etudiant</a>
               </li>
 
 
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'list_formations' %}"> <i
-                    class="fas fa-home"> </i> Formations</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'list_formations' %}"> <i class="fas fa-chalkboard"></i> Formations</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'liste_inscrie' %}"><i class="fas fa-car">
-                  </i> Inscriptions</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'liste_inscrie' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                  Inscriptions</a>
               </li>
 
               <li class="nav-item">

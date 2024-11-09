@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
 
+
+
 {% if messages %}
 <div class="alert alert-success text-center ">
   {% for message in messages %}
@@ -26,7 +28,7 @@
           <div class="carousel-caption text-start">
             <h1>L'ELEVAGE.</h1>
             <p class="opacity-75">L'elevage concerne de n'import que produit </p>
-            
+
           </div>
         </div>
       </div>
@@ -66,77 +68,144 @@
 
 
 
-<br><br>
-<footer class="footer_section">
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 footer-col">
-      <div class="footer_contact">
-        <h4>
-          Cordonner
-        </h4>
-        <div class="contact_link_box">
-          <a href="">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <span>
-              Location
-            </span>
-          </a><br>
-          <a href="">
-            <i class="fa fa-phone" aria-hidden="true"></i>
-            <span>
-              Appel +261 349381846
-            </span>
-          </a><br>
-          <a href="">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-            <span>
-              iftmantsinanana@gmail.com
-            </span>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 footer-col">
-      <div class="footer_detail">
-        <a href="" class="footer-logo">
-          IFTM
-        </a>
-        <p>
-          les partenairiat de IFTM
-        </p>
-        <div class="footer_social">
-          <a href="">
-            <i class="fa fa-facebook">facebook</i>
-          </a>
-          <a href="">
-            <i class="fa fa-twitter">twitter</i>
-          </a>
-          <a href="">
-            <i class="fa fa-linkedin">linkedin</i>
-          </a>
-          <a href="">
-            <i class="fa fa-instagram">instagram</i>
-          </a>
-          <a href="">
-            <i class="fa fa-pinterest">pinterest</i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 footer-col">
-      <p>
-        Heur d'ouverture du bureau de ITFM
-      </p>
-      <p>
-        Tout le jours
-      </p>
-      <p>
-        8H 30min -17H 00 min
-      </p>
-    </div>
-  </div>
 
-</div>
-</footer>
-{% endblock content %}
+
+
+<br><br>
+
+<!-- 
+
+<h2>Monthly Inscriptions</h2>
+<canvas id="inscriptionsChart" width="400" height="200"></canvas>
+
+<script>
+  const ctx = document.getElementById('inscriptionsChart').getContext('2d');
+  const inscriptionsChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: {{ months| safe }},
+  datasets: [{
+    label: 'Inscriptions per Month',
+    data: {{ counts| safe }},
+    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 1
+            }]
+        },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+    });
+</script>
+
+
+
+<h2>Most Popular Formations</h2>
+<canvas id="popularFormationsChart" width="400" height="200"></canvas>
+
+<script>
+  const popularCtx = document.getElementById('popularFormationsChart').getContext('2d');
+  const popularFormationsChart = new Chart(popularCtx, {
+    type: 'pie',
+    data: { labels: {{ formations| safe }}, datasets: [{
+      label: 'Popular Formations',
+      data: {{ counts| safe }},
+      backgroundColor: [
+      'rgba(255, 99, 132, 0.6)',
+      'rgba(54, 162, 235, 0.6)',
+      'rgba(255, 206, 86, 0.6)',
+      'rgba(75, 192, 192, 0.6)'
+    ],
+      borderColor: [
+      'rgba(255, 99, 132, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)'
+    ],
+      borderWidth: 1
+            }]
+        }
+    });
+ -->
+
+
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 footer-col">
+          <div class="footer_contact">
+            <h4>
+              Cordonner
+            </h4>
+            <div class="contact_link_box">
+              <a href="">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Location
+                </span>
+              </a><br>
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>
+                    Appel +261 349381846
+                  </span>
+                </a><br>
+                  <a href="">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span>
+                      iftmantsinanana@gmail.com
+                    </span>
+                  </a>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-4 footer-col">
+            <div class="footer_detail">
+              <a href="" class="footer-logo">
+                IFTM
+              </a>
+              <p>
+                les partenairiat de IFTM
+              </p>
+              <div class="footer_social">
+                <a href="">
+                  <i class="fa fa-facebook">facebook</i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter">twitter</i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin">linkedin</i>
+                </a>
+                <a href="">
+                  <i class="fa fa-instagram">instagram</i>
+                </a>
+                <a href="">
+                  <i class="fa fa-pinterest">pinterest</i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 footer-col">
+            <p>
+              Heur d'ouverture du bureau de ITFM
+            </p>
+            <p>
+              Tout le jours
+            </p>
+            <p>
+              8H 30min -17H 00 min
+            </p>
+          </div>
+        </div>
+
+      </div>
+  </footer>
+
+
+
+  {% endblock content %}

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>{% block title %}...{% endblock title %}</title>
+    <title>{% block title %}connecte{% endblock title %}</title>
 
     <!-- Static CSS  -->
     <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
@@ -61,11 +61,9 @@
     
                     <!-- Bouton d'ajout -->
                     <div class="d-grid gap-2 mt-2">
-                        <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-sigin"></i>&nbsp;&nbsp; Se connecte</button>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i>&nbsp;&nbsp; Se connecte</button>
                         <a href="{% url 'signup' %}" class="btn btn-success btn-sm"><i class="fas fa-signup"></i>&nbsp;&nbsp;S'inscrire</a>
                     </div>
-
-                    <a href="{% url 'signup' %}">Admin</a>
                 </form>
             </div>
         </div>
