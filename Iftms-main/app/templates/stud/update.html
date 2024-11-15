@@ -36,8 +36,9 @@
                 <!-- For Naissance (Date of Birth) -->
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text side-label"><span class="txt-sm">Naissance</span></span>
-                    <input type="date" name="naissance" id="naissance" class="form-control" value="{{ student.naissance|date:'Y-m-d' }} ">
+                    <input type="date" name="naissance" id="naissance" class="form-control" value="{{ student.naissance|date:'Y-m-d' }}" required>
                     
+
                 </div>
 
                 <!-- For Genre (Gender) -->

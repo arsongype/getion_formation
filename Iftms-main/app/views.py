@@ -313,8 +313,7 @@ def inscrie_list(request):
             Q(student__nom__icontains=search_query) |
             Q(student__prenom__icontains=search_query) |
             Q(student__email__icontains=search_query) |
-            Q(formation__type__icontains=search_query)|
-            Q(formateur__names__icontains=search_query)
+            Q(formation__type__icontains=search_query)
         )
 
     if start_date and end_date:
@@ -366,7 +365,7 @@ def add_inscrie(request):
         send_mail(
             'Confirmation d’inscription',
             f'Bonjour {student.nom} {student.prenom},\n\n'
-            f'Vous êtes inscrit à la formation "{formation.type}" d’une durée de {formation.dure} la date inscriptions est   "{inscrie.dates}. '
+            f'Vous êtes inscrit à la formation "{formation.type}" d’une durée de {formation.dure}  date inscriptions est   "{inscrie.dates}. '
             f'Le coût de la formation est {formation.prix} Ariary.\n\n'
             'Merci pour votre inscription.',
             'gype09@gmail.com',  # Replace with your sender email

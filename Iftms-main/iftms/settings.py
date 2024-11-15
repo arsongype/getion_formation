@@ -136,4 +136,4 @@ BASE_URL = "http://localhost:8000"
 
 
 #  $mail->Username = 'gype09@gmail.com';
-#         $mail->Password = 'ugugdxhrrtzllsik';
+#  $mail->Password = 'ugugdxhrrtzllsik';

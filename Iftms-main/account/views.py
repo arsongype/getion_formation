@@ -7,8 +7,10 @@ from django.core.mail import send_mail
 from django.utils.crypto import get_random_string
 from .models import User
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='login')
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -31,6 +33,7 @@ def signup(request):
 
     return render(request, 'signup.html')
 
+@login_required(login_url='login')
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -46,7 +49,7 @@ def login(request):
     return render(request, 'login.html')
 
 
-
+@login_required(login_url='login')
 def confirm_email(request, token):
     try:
         user = User.objects.get(token=token)
@@ -59,7 +62,7 @@ def confirm_email(request, token):
 
     return redirect("login")
 
-
+@login_required(login_url='login')
 def password_reset_request(request):
     if request.method == "POST":
         email = request.POST.get("email")
@@ -85,7 +88,7 @@ def password_reset_request(request):
 
 
 
-
+@login_required(login_url='login')
 def reset_password(request, token):
     try:
         user = User.objects.get(token=token)
