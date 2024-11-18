@@ -27,9 +27,7 @@
     <div class="d-flex justify-content-between">
         <a id="add-stude" href="{% url 'add' %}" class="btn btn-outline-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;&nbsp; Ajouter</a>
        
-        <span class="welcome text-dark">
-            Bienvenue : <strong><span class="text-primary">{{ user.get_username }}</span></strong>
-        </span>
+    
     </div> <br>
 
     {% if messages %}

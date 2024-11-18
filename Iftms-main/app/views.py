@@ -260,7 +260,7 @@ def add_formation(request):
         else:
             messages.error(request, 'Please fill out all fields.')
 
-        return render(request, 'for/add_form.html')
+    return render(request, 'for/add_form.html')
 
 
 
@@ -370,9 +370,9 @@ def add_inscrie(request):
             'Merci pour votre inscription.',
             'gype09@gmail.com',  # Replace with your sender email
             [student.email],  # Student's email as the recipient
-            fail_silently=False,
-            
+            fail_silently=False,            
             )
+        
         messages.success(request, 'Inscription ajouté avec succès')
         return redirect(reverse('liste_inscrie'))
 

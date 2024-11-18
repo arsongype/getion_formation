@@ -13,6 +13,20 @@
 {% endif %}
 
 <main>
+
+
+  <div class="d-flex justify-content-center align-items-center min-vh-90">
+    <h1 class="text-center">
+      <span class="welcome text-dark">
+        Bienvenue : <strong><span class="text-primary">{{ user.get_username }}</span></strong>
+      </span>
+    </h1>
+  </div><br><br>
+  
+
+
+  
+ 
   <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"

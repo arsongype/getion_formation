@@ -105,13 +105,10 @@ def reset_password(request, token):
     return render(request, "reset_password.html", {"token": token})
 
 
+@login_required(login_url='login')
 def logout(request):
     if 'user_id' in request.session:
         del request.session['user_id']  # Supprime l'utilisateur de la session
         messages.success(request, "Vous êtes déconnecté.")
     return redirect("login")
 
-
-# def logout(request):
-#     auth_logout(request)
-#     return redirect('logout')

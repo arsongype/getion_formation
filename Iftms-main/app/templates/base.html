@@ -26,77 +26,86 @@
 </head>
 
 <body>
-
-
-
+ 
+ 
   <main>
+    <!-- Navbar avec Sidebar Offcanvas -->
     <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
       <div class="container-fluid">
+
+        
+
         <a href="{% url 'home' %}"
           class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <img src="{% static 'img/log.png' %}" alt="logo.png" class="img-fluid"
-            style="width: 110px; height: 60px; border: solid; border-radius: 20px;">
+                style="width: 90px; height: 60px; border: solid 1px; border-radius: 50px;">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark"
-          aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark"
-          aria-labelledby="offcanvasNavbarDarkLabel">
+
+
+        <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark"
+        aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <a href="{% url 'home' %}"
+        class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none ms-auto">
+        <img src="{% static 'img/adminpropic.png' %}" alt="logo.png" class="img-fluid" style="width: 90px; height: 60px; border: solid 1px; border-radius: 50px;">
+      </a>
+
+      
+
+        <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
           <div class="offcanvas-header">
 
-
-          
             <a href="{% url 'home' %}"
               class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-              <img src="{% static 'img/adminpropic.png' %}" alt="logo.png" class="img-fluid"
-              style="width: 90px; height: 60px; border: solid 1px; border-radius: 50px;"> </i>  
-            </a> 
-      
+              <img src="{% static 'img/log.png' %}" alt="logo.png" class="img-fluid"
+              style="width: 110px; height: 60px; border: solid; border-radius: 20px;">
+
+              
+            </a>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
               aria-label="Close"></button>
           </div>
-
+  
 
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'formateur_list' %}"> <i class="fas fa-warehouse">  </i>  Formateur</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'formateur_list' %}"><i class="fas fa-warehouse">  </i>  Formateur</a>
               </li>
-
+  
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'stude' %}"> <i
-                    class="fas fa-user-graduate"> </i> Etudiant</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'stude' %}"><i class="fas fa-user-graduate"> </i> Etudiant</a>
               </li>
-
-
+  
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'list_formations' %}"> <i class="fas fa-chalkboard"></i> Formations</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'list_formations' %}"><i class="fas fa-chalkboard"></i> Formations</a>
               </li>
-
+  
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'liste_inscrie' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                  Inscriptions</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'liste_inscrie' %}"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscriptions</a>
               </li>
-
+  
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}"><i
-                    class="fas fa-sign-out-alt"></i> Se Deconnecte</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Se Deconnecte</a>
               </li>
             </ul>
-
           </div>
         </div>
       </div>
     </nav>
-
+  
+    <!-- Contenu Principal -->
     
     <div class="bg-white p-5 rounded">
-      {% block content %}
-
-      {% endblock content %}
+     {% block content %}
+             
+     {% endblock %}
     </div>
+      
   </main>
+  
 
 
   <script src="{% static 'popper/popper.min.js' %}"></script>

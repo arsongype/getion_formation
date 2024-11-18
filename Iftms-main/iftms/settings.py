@@ -25,6 +25,9 @@ SECRET_KEY = 'django-insecure-k4@in$3nf5o&*&ck3y41_msd8_3fs)s=_#q(k6$jp!1sem#8cp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ALLOWED_HOSTS = ['arsonelyse.pythonanywhere.com']
+
+
 ALLOWED_HOSTS = []
 
 
@@ -112,6 +115,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+LOGIN_URL = 'login'
+
 
 
 # Static files (CSS, JavaScript, Images)

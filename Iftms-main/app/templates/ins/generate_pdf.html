@@ -1,63 +1,72 @@
 {% load static %}
 
-
 {% block content %}
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>...</title>
+    <title>Confirmation d'Inscription</title>
     
-
     <style>
-
         body {
             font-family: Arial, sans-serif;
         }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
         th, td {
-            border: 1px solid #000;
+            border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
         th {
             background-color: #f2f2f2;
+            width: 160px; /* Définir la largeur de la colonne th */
         }
-        p{
-            margin-left: 190px; font-size: 18px; font-weight: bold;
+        h1 {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
         }
-
-        body { font-family: Arial, sans-serif; }
-        h1 { text-align: center; font-size: 25px; font-weight: bold;}
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
-        .center { text-align: center; }
-
+        .center {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
-    
-    <tbody>
-       
-    
+    <h1>Confirmation de l'Inscription</h1>
 
-    <h1>confirmations de l'Inscription</h1>
+    <table>
+        <tr>
+            <th>Nom et Prénom</th>
+            <td>{{ student.nom }} {{ student.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ student.email }}</td>
+        </tr>
+        <tr>
+            <th>Formation</th>
+            <td>{{ formation.type }}</td>
+        </tr>
+        <tr>
+            <th>Durée</th>
+            <td>{{ formation.dure }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ formation.prix }} Ariary</td>
+        </tr>
+        <tr>
+            <th>Date d'inscription</th>
+            <td>{{ inscrie.dates }}</td>
+        </tr>
+    </table>
 
-
-    <p><strong>Nom:</strong> {{ student.nom }}</p>
-    <p><strong>Prénom:</strong> {{ student.prenom }}</p>
-    <p><strong>Email:</strong> {{ student.email }}</p>
-    <p><strong>Formation:</strong> {{ formation.type }}</p>
-    <p><strong>Durée:</strong> {{ formation.dure }}</p>
-    <p><strong>Prix:</strong> {{ formation.prix }} Ariary</p>
-    <p><strong>Date d'inscription:</strong> {{ inscrie.dates }}</p>
-
-</tbody>
 </body>
 </html>
 
